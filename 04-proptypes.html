@@ -1,0 +1,45 @@
+<body>
+  <div id="root"></div>
+  <!-- <script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script> -->
+  <script src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
+  <!-- <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script> -->
+  <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/prop-types@15.6.0/prop-types.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+  <script type="text/babel">
+    // function SayHello(props) {
+    class SayHello extends React.Component {
+      static propTypes = {
+        firstName: PropTypes.string.isRequired,
+        lastName: PropTypes.string.isRequired,
+      }
+      render() {
+        const { firstName, lastName } = this.props
+        return (
+          <div>
+            Hello {firstName} {lastName}!
+          </div>
+        )
+      }
+    }
+    // }
+
+    // const PropTypes = {
+    //   string(props, propName, componentName) {
+    //     if (typeof props[propName] !== 'string') {
+    //       return new Error(`You need to pass a string for ${propName} in ${componentName} but you passed a ${typeof props[propName]}`)
+    //     }
+    //   } 
+    // }
+
+    // SayHello.propTypes = {
+    //   firstName: PropTypes.string.isRequired,
+    //   lastName: PropTypes.string.isRequired,
+    // }
+
+    ReactDOM.render(
+      <SayHello firstName={true} />,
+      document.getElementById('root')
+    )
+  </script>
+</body>
