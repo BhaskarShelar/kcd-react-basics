@@ -1,0 +1,35 @@
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+  <script type="text/babel">
+    class NameForm extends React.Component {
+      handleSubmit = (ev) => {
+        ev.preventDefault()
+        console.log({target: ev.target})
+        console.log(ev.target[0].value)
+        // console.log(ev.target.username.value) Works in Chrome, but tree is missing elements
+        console.log(ev.target.elements.username.value)
+        console.log(this.inputNode.value)
+      }
+      render() {
+        return (
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Name:
+              <input type="text" name="username" ref={(node) => this.inputNode = node} />
+            </label>
+            <button type="submit">Submit</button>
+          </form>
+        )
+      }
+    }
+    const rootElement = document.getElementById('root')
+    const element = <NameForm />
+    ReactDOM.render(
+      element, 
+      rootElement,
+    )
+  </script>
+</body>
